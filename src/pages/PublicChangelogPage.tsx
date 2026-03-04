@@ -1,4 +1,5 @@
 import { Heart, Laugh, Rocket, Sparkles, AlertCircle } from "lucide-react";
+import { Button, Badge } from "@geenius-ui/react-css";
 import ThemeToggle from "../components/ThemeToggle";
 
 const posts = [
@@ -16,7 +17,7 @@ export default function PublicChangelogPage() {
                     <span className="serif" style={{ fontWeight: 700, fontSize: "1.2rem" }}>Product Updates</span>
                 </div>
                 <div style={{ display: "flex", gap: "var(--space-4)", alignItems: "center" }}>
-                    <button className="btn btn-primary btn-sm">Subscribe to Updates</button>
+                    <Button variant="primary" size="sm">Subscribe to Updates</Button>
                     <ThemeToggle />
                 </div>
             </div>
@@ -25,12 +26,12 @@ export default function PublicChangelogPage() {
         <main style={{ maxWidth: 800, margin: "0 auto", padding: "var(--space-8) var(--space-4)" }}>
             {posts.map(post => (<article key={post.id} style={{ marginBottom: "var(--space-8)", paddingBottom: "var(--space-8)", borderBottom: "1px solid var(--color-border)" }}>
                 <div style={{ display: "flex", alignItems: "baseline", gap: "var(--space-3)", marginBottom: "var(--space-2)" }}>
-                    <span className={`badge badge-${post.type}`}>
+                    <Badge variant={post.type === "new" ? "default" : post.type === "improved" ? "secondary" : "destructive"}>
                         {post.type === "new" && <Sparkles size={10} style={{ marginRight: 4 }} />}
                         {post.type === "improved" && <Rocket size={10} style={{ marginRight: 4 }} />}
                         {post.type === "fixed" && <AlertCircle size={10} style={{ marginRight: 4 }} />}
                         {post.type}
-                    </span>
+                    </Badge>
                     <time style={{ color: "var(--color-text-tertiary)", fontSize: "13px" }}>{post.date}</time>
                 </div>
 
@@ -41,9 +42,9 @@ export default function PublicChangelogPage() {
                 </div>
 
                 <div style={{ display: "flex", gap: "var(--space-2)", marginTop: "var(--space-4)" }}>
-                    <button className="btn btn-ghost btn-sm" style={{ borderRadius: 999, border: "1px solid var(--color-border)", background: "var(--color-bg-secondary)" }}><Heart size={14} style={{ color: "#EF4444" }} /> <span style={{ fontSize: 12 }}>{post.reactions.heart}</span></button>
-                    <button className="btn btn-ghost btn-sm" style={{ borderRadius: 999, border: "1px solid var(--color-border)", background: "var(--color-bg-secondary)" }}><Rocket size={14} style={{ color: "#F59E0B" }} /> <span style={{ fontSize: 12 }}>{post.reactions.rocket}</span></button>
-                    <button className="btn btn-ghost btn-sm" style={{ borderRadius: 999, border: "1px solid var(--color-border)", background: "var(--color-bg-secondary)" }}><Laugh size={14} style={{ color: "#3B82F6" }} /> <span style={{ fontSize: 12 }}>{post.reactions.laugh}</span></button>
+                    <Button variant="ghost" size="sm" className="reaction-btn"><Heart size={14} style={{ color: "#EF4444" }} /> <span style={{ fontSize: 12 }}>{post.reactions.heart}</span></Button>
+                    <Button variant="ghost" size="sm" className="reaction-btn"><Rocket size={14} style={{ color: "#F59E0B" }} /> <span style={{ fontSize: 12 }}>{post.reactions.rocket}</span></Button>
+                    <Button variant="ghost" size="sm" className="reaction-btn"><Laugh size={14} style={{ color: "#3B82F6" }} /> <span style={{ fontSize: 12 }}>{post.reactions.laugh}</span></Button>
                 </div>
             </article>))}
         </main>

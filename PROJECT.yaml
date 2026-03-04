@@ -1,0 +1,13 @@
+id: f2604a72-85ca-4a76-b2d1-3e897b9b9e27
+name: changelog-app
+description: React + TypeScript + Vite
+tier: prototype
+lane: oss
+priority: medium
+oss: false
+stack: [typescript, react, convex, tailwind, vite]
+repo: "https://github.com/mxn2020/changelog-app"
+deploy_url: null
+last_active: 2026-02-24
+tags: []
+notes: 
